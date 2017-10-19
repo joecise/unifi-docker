@@ -2,7 +2,7 @@ FROM debian:stretch-slim
 
 ARG DEBIAN_FRONTEND=noninteractive
 
-ENV PKGURL=https://dl.ubnt.com/unifi/5.5.20/unifi_sysvinit_all.deb
+ENV PKGURL=https://dl.ubnt.com/unifi/5.5.24/unifi_sysvinit_all.deb
 
 RUN mkdir -p /usr/share/man/man1 /var/cache/apt/archives && \
   apt-get clean && \
@@ -37,8 +37,7 @@ VOLUME ["${DATADIR}", "${RUNDIR}", "${LOGDIR}"]
 EXPOSE 6789/tcp 8080/tcp 8443/tcp 8880/tcp 8843/tcp 3478/udp
 
 COPY unifi.sh /usr/local/bin/
-COPY import_cert.sh /usr/local/bin/
-RUN chmod +x /usr/local/bin/unifi.sh /usr/local/bin/import_cert.sh
+RUN chmod +x /usr/local/bin/unifi.sh
 
 WORKDIR /var/lib/unifi
 
